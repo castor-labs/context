@@ -11,10 +11,17 @@ job("Prepare Dev Docker Image") {
     }
 
     docker {
+
+        env["AUTOMATION_CLIENT_ID"] = Params("automation_client_id")
+        env["AUTOMATION_TOKEN"] = Secrets("automation_token")
+
         build {
        		context = ".castor/docker"
             file = "lib/Dockerfile"
-       	}
+            target = "dev"
+            args["COMPOSER_USER"] = "\$AUTOMATION_CLIENT_ID"
+            args["COMPOSER_TOKEN"] = "\$AUTOMATION_TOKEN"
+        }
 
        	push("castorlabs.registry.jetbrains.space/p/phposlib/images/context") {
        	    tags("dev")
@@ -34,4 +41,3 @@ job("Quality Checks") {
         }
     }
 }
-
