@@ -9,7 +9,7 @@ on:
     branches: ["main"]
 
 env:
-  COMPOSER_FLAGS: "--ansi --no-interaction --no-progress --no-suggest -ignore--platform-req=php"
+  COMPOSER_FLAGS: "--ansi --no-interaction --no-progress --no-suggest --ignore-platform-req=php"
 
 jobs:
   php-code-checks:
