@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @link https://github.com/castor-labs/context
  * @project castor/context
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
- * @license MIT
+ * @license BSD-3-Clause
  * @copyright 2022 Castor Labs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
@@ -19,7 +19,7 @@ namespace Castor\Context;
 use Castor\Context;
 
 /**
- * Value is a context that always returns the same value, no matter the key.
+ * Value is a Context implementation that always returns the same value, no matter the key.
  *
  * @psalm-immutable
  */

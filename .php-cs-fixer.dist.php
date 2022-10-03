@@ -5,7 +5,7 @@ $header = <<<EOF
 @link https://github.com/castor-labs/context
 @project castor/context
 @author Matias Navarro-Carter mnavarrocarter@gmail.com
-@license MIT
+@license BSD-3-Clause
 @copyright 2022 Castor Labs Ltd
 
 For the full copyright and license information, please view the LICENSE
