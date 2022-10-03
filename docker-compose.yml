@@ -8,9 +8,6 @@ services:
       context: .castor/docker
       dockerfile: ./lib/Dockerfile
       target: dev
-      args:
-        COMPOSER_USER: ${SPACE_USER:?}
-        COMPOSER_TOKEN: ${SPACE_TOKEN:?}
     container_name: castor.context.lib
     working_dir: /castor/lib
     volumes:

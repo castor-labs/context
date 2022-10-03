@@ -3,8 +3,6 @@ FROM alpine:3.16 as base
 ARG UID=1000
 ARG COMPOSER_VERSION=2.3.0
 ARG USER=castor
-ARG COMPOSER_USER
-ARG COMPOSER_TOKEN
 
 # Create a development user
 RUN adduser $USER --disabled-password --home /$USER --uid $UID
@@ -48,11 +46,6 @@ RUN apk add --no-cache wget
 # Download and install composer
 RUN wget -O /usr/bin/composer https://github.com/composer/composer/releases/download/$COMPOSER_VERSION/composer.phar && \
     chmod +x /usr/bin/composer
-
-# Setup Composer Auth for Private Packages
-USER $USER
-RUN composer config --global --auth http-basic.composer.pkg.jetbrains.space $COMPOSER_USER $COMPOSER_TOKEN
-USER root
 
 FROM base as dev
 

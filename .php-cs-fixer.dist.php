@@ -1,6 +1,8 @@
 <?php
 
-$header = <<<EOF
+declare(strict_types=1);
+
+$header = <<<'EOF'
 @project Castor Context
 @link https://github.com/castor-labs/context
 @project castor/context
@@ -12,8 +14,7 @@ For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 EOF;
 
-return (new PhpCsFixer\Config())
-    ->setCacheFile('.castor/var/php-cs-fixer.cache')
+$config = (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PhpCsFixer' => true,
@@ -24,4 +25,14 @@ return (new PhpCsFixer\Config())
         PhpCsFixer\Finder::create()
             ->in(__DIR__)
             ->exclude('.php-cs-fixer.dist.php')
-    );
+    )
+;
+
+$cachePath = __DIR__.'/.castor/var/cache/php-cs-fixer.cache';
+$cacheDir = dirname($cachePath);
+
+if (!is_dir($cacheDir) && !@mkdir($cacheDir, 0755, true) && !is_dir($cacheDir)) {
+    return $config;
+}
+
+return $config->setCacheFile($cachePath);
