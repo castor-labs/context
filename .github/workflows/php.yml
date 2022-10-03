@@ -58,12 +58,13 @@ jobs:
       - name: "Install Locked Dependencies"
         if: ${{ matrix.dependencies == 'locked' }}
         run: "composer install ${{ env.COMPOSER_FLAGS }}"
+      # We only run code style checker on locked
       - name: "Run Code Style Checker"
         run: "vendor/bin/php-cs-fixer fix --dry-run -v"
-        continue-on-error: ${{ matrix.dependencies == 'highest' }}
+        if: ${{ matrix.dependencies == 'locked' }}
+      # We only run static analysis on locked
       - name: "Run Static Analysis"
-        continue-on-error: ${{ matrix.dependencies == 'highest' }}
+        if: ${{ matrix.dependencies == 'locked' }}
         run: "vendor/bin/psalm --shepherd --stats"
       - name: "Run Test Suite"
-        continue-on-error: ${{ matrix.dependencies == 'highest' }}
         run: "vendor/bin/phpunit"
