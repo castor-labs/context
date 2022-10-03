@@ -1,12 +1,12 @@
-MNC Context
-========
+Castor Context
+==============
 
 Context passing abstraction for modern PHP projects.
 
 ## Installation
 
 ```bash
-composer require mnavarrocarter/context
+composer require castor/context
 ```
 
 ## Quick Start
@@ -63,7 +63,7 @@ function with_tenant_id(Context $ctx, string $tenantId): Context
 function get_tenant_id(Context $ctx): string
 {
     $val = $ctx->value(ContextKey::TENANT_ID);
-    if (!is_string($val) {
+    if (!is_string($val)) {
         return '';
     }
     
@@ -78,7 +78,7 @@ function with_user_id(Context $ctx, string $userId): Context
 function get_user_id(Context $ctx): string
 {
     $val = $ctx->value(ContextKey::USER_ID);
-    if (!is_string($val) {
+    if (!is_string($val)) {
         return '';
     }
     
