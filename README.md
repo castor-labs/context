@@ -34,12 +34,12 @@ echo $ctx->value('foo'); // Prints: bar
 Since it is a lightweight dependency, it is designed to be part of your domain / business logic as a
 contextual abstraction.
 
-In the following example, we use context to query the users of a particular tenant.
+In the following example, we use context to query the users of a particular tenant only.
 
 It is best practice to create your own functions on top of the base context api to ease the boilerplate
-of setting / retrieving values.
+of setting / retrieving values. You can use functions or classes with static methods: whatever suits you better.
 
-Also, if you run PHP >=8.1, enums are better suited for keys rather than strings since these could
+Also, if you run PHP >=8.1, enums are better suited for keys rather than strings since these cannot
 not collide with other keys of the same name in other libraries that use the context api.
 
 ```php
@@ -107,3 +107,15 @@ class UserRepository
     }
 }
 ```
+
+## Best Practices
+
+1. If possible (PHP >=8.1), use Enums for keys as they will not collide with other keys. If not possible, then use
+   namespaced string keys (Ex: `vendor.route_params`)
+2. When you need to store multiple somewhat-related values in the Context, don't create multiple keys for each of them
+   but rather create a data structure to hold all those values. You can then retrieve the data structure and apply 
+   controlled mutations to it.
+3. Values inside context SHOULD NOT be immutable. The context api is an immutable api in itself, and the values inside
+   of it are meant to mutate with the progression of the request. (Immutability here means breaking reference equality).
+4. In general, you SHOULD NOT store services in the context. Services should be provided via dependency injection. Think
+   about your use case when you are tempted to do pass a service into the context, as there is always an alternative.

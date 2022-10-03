@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  * @project Castor Context
- * @link https://castorlabs.jetbrains.space/p/phposlib/repositories/context
+ * @link https://github.com/castor-labs/context
  * @project castor/context
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
