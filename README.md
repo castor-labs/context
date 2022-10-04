@@ -21,10 +21,10 @@ is heavily inspired in [Golang's own Context Api](https://pkg.go.dev/context).
 ```php
 <?php
 
-use MNC\Context;
+use Castor\Context;
 
-$ctx = Context\fallback();
-$ctx = Context\with_value($ctx, 'foo', 'bar');
+$ctx = Context\fallback(); // This is a default base context
+$ctx = Context\with_value($ctx, 'foo', 'bar'); // This returns a new context with the passed values stored
 
 // Later in the call stack
 
@@ -47,7 +47,7 @@ not collide with other keys of the same name in other libraries that use the con
 
 namespace MyApp;
 
-use MNC\Context;
+use Castor\Context;
 
 enum ContextKey
 {
