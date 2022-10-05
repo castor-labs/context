@@ -21,6 +21,9 @@ use Castor\Context;
 /**
  * Value is a Context implementation that always returns the same value, no matter the key.
  *
+ * You SHOULD NOT use this class directly in application code. It is, however, very useful in
+ * testing scenarios.
+ *
  * @psalm-immutable
  */
 final class Value implements Context
@@ -32,6 +35,9 @@ final class Value implements Context
         $this->value = $value;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function value(mixed $key): mixed
     {
         return $this->value;

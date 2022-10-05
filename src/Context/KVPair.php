@@ -40,6 +40,9 @@ final class KVPair implements Context
         $this->value = $value;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function value(mixed $key): mixed
     {
         if ($this->key === $key) {
