@@ -32,9 +32,8 @@ namespace Castor;
  * be passed and, depending on the implementation, it can violate the Law of Demeter.
  *
  * The context abstraction serves as a carrier for all these short-lived values. You only need to pollute your call
- * stack with one argument, and you can add as many things as you like to it.
- *
- * Client code needs only to know about the values it is interested in. Nothing else.
+ * stack with one extra argument, and you can add as many things as you like to it, making this approach explicit,
+ * flexible and safe.
  */
 interface Context
 {
