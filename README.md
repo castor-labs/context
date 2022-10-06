@@ -28,4 +28,4 @@ echo $ctx->value('foo'); // Prints: bar
 ```
 
 To learn about the rationale behind this library, best practices when using it and implementation examples, check 
-the [documentation](https://castor-labs.github.io/docs/packages/context/intro.md).
+the [documentation](https://castor-labs.github.io/docs/packages/context/intro.html).
