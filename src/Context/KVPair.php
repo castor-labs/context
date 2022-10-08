@@ -41,6 +41,26 @@ final class KVPair implements Context
     }
 
     /**
+     * Returns an array with all the key values stored in the
+     * context chain, as long as is an interrupted chain of
+     * KVPair instances.
+     *
+     * This function should be used for debugging purposes only.
+     *
+     * @return array<array{0: mixed, 1: mixed}>
+     */
+    public static function debug(Context $ctx): array
+    {
+        $chain = [];
+        while ($ctx instanceof self) {
+            $chain[] = [$ctx->key, $ctx->value];
+            $ctx = $ctx->next;
+        }
+
+        return $chain;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function value(mixed $key): mixed

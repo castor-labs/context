@@ -35,16 +35,9 @@ function with_value(Context $context, mixed $key, mixed $value): Context
  *
  * You can think about it as an "empty" context.
  *
- * This method always returns the same instance.
- *
- * @psalm-external-mutation-free
+ * @psalm-pure
  */
 function fallback(): Context
 {
-    static $context = null;
-    if (null === $context) {
-        $context = new Value(null);
-    }
-
-    return $context;
+    return new Value();
 }
