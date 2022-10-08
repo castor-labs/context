@@ -30,8 +30,8 @@ class ContextFunctionsTest extends TestCase
         $contextA = Context\fallback();
         $contextB = Context\fallback();
 
-        // Fallback should return always the same instance
-        $this->assertSame($contextA, $contextB);
+        // Fallback should always return a different instance
+        $this->assertNotSame($contextA, $contextB);
 
         // Context for fallback should always yield null
         $this->assertNull($contextA->value('foo'));

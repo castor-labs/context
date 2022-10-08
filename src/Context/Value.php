@@ -30,7 +30,7 @@ final class Value implements Context
 {
     private mixed $value;
 
-    public function __construct(mixed $value)
+    public function __construct(mixed $value = null)
     {
         $this->value = $value;
     }
