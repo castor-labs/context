@@ -27,9 +27,9 @@ class KVPairTest extends TestCase
 {
     public function testDebug(): void
     {
-        $ctx = fallback();
-        $ctx = with_value($ctx, 'foo', 'bar');
-        $ctx = with_value($ctx, 'bar', 'foo');
+        $ctx = nil();
+        $ctx = withValue($ctx, 'foo', 'bar');
+        $ctx = withValue($ctx, 'bar', 'foo');
 
         $chain = KVPair::debug($ctx);
 
