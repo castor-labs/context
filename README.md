@@ -19,11 +19,13 @@ composer require castor/context
 
 use Castor\Context;
 
-$ctx = Context\fallback(); // This is a default base context
-$ctx = Context\with_value($ctx, 'foo', 'bar'); // This returns a new context with the passed values stored
+// This is a default base context
+$ctx = Context\nil();
+
+// This returns a new context with the passed values stored
+$ctx = Context\withValue($ctx, 'foo', 'bar');
 
 // Later in the call stack
-
 echo $ctx->value('foo'); // Prints: bar
 ```
 

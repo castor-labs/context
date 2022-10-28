@@ -27,8 +27,8 @@ class ContextFunctionsTest extends TestCase
 {
     public function testContextFallback(): void
     {
-        $contextA = Context\fallback();
-        $contextB = Context\fallback();
+        $contextA = Context\nil();
+        $contextB = Context\nil();
 
         // Fallback should always return a different instance
         $this->assertNotSame($contextA, $contextB);
@@ -44,7 +44,7 @@ class ContextFunctionsTest extends TestCase
      */
     public function testContextWithValue(): void
     {
-        $context = Context\with_value(Context\fallback(), 'foo', 'bar');
+        $context = Context\withValue(Context\nil(), 'foo', 'bar');
 
         $this->assertSame('bar', $context->value('foo'));
         $this->assertNull($context->value('bar'));
